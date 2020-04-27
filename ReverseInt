@@ -1,0 +1,29 @@
+
+ public class MainReverse {
+	public static void main(String[] args) { 
+	int tester = -1123;	
+	System.out.print(split(tester));
+	}
+	
+	public static int split(int x) { 
+	int newHolder = x; 
+	
+		if(newHolder < 0) { 
+			newHolder = newHolder * -1; 
+		}
+		String testString = Integer.toString(newHolder); 
+		int length = testString.length(); 
+		String holder = "";
+		for(int i = length - 1; i >= 0; i--) { 
+			holder = holder.concat(testString.substring(i,i+1)); 
+		}
+		int combined = Integer.parseInt(holder); 
+		if(x < 0) { 
+			combined = combined * -1; 
+		}
+		return combined; 
+	
+       
+	}
+
+}
