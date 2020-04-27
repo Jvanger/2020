@@ -1,0 +1,48 @@
+//POJO for grouping multiple instants
+final class Initialize{ 
+	public double firstCoeff; 
+	public double secondCoeff; 
+	public double thirdCoeff; 
+	public double fourthTerm; 
+	public Initialize(double firstCoeff, double secondCoeff, double thirdCoeff, double fourthTerm) { 
+		this.firstCoeff = firstCoeff; 
+		this.secondCoeff = secondCoeff; 
+		this.thirdCoeff = thirdCoeff; 	
+		this.fourthTerm = fourthTerm; 
+	}
+}
+final class Equation{ 
+	public String equationHolder;
+	public Equation(String equationHolder) { 
+		this.equationHolder = equationHolder; 
+	}
+}
+ class MainAnalysis {
+	public static Initialize getCoffs(double[] newSequence) { 
+		double fD = (newSequence[1] - newSequence[0]); 
+		double sD = (newSequence[2] - newSequence[1]); 
+		//solves for the the Coefficients
+		double firstCoeff = (sD - fD) / 2; 
+		double secondCoeff =  (fD - (firstCoeff * 3)); 
+		double thirdCoeff = newSequence[0] - (firstCoeff + secondCoeff);
+		// solving for the next term in the sequence
+		double fourth = (firstCoeff * 16) + (secondCoeff * 4) + (thirdCoeff); 
+		return new Initialize(firstCoeff, secondCoeff, thirdCoeff, fourth); 
+	}	
+	public static void main(String[] args) {
+		double[] sequence = {1,3,6};
+		Initialize recall = getCoffs(sequence);
+		double first = recall.firstCoeff; 
+		double second = recall.secondCoeff; 
+		double third = recall.thirdCoeff; 
+		Equation secondRecall = getEquation(first, second, third); 
+		System.out.println("Equation: " + secondRecall.equationHolder);
+	}
+	public static Equation getEquation(double x, double y, double z) {
+		double first = x; 
+		double second = y; 
+		double third = z; 
+		String holder = first + "x^2 + " + second + "x + " + third;
+		return new Equation(holder); 
+	}
+}
