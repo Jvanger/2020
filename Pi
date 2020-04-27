@@ -1,0 +1,29 @@
+ class PiMain {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int testAmount = 100; 
+		System.out.print(Compute(testAmount));
+	}
+	public static double Compute(int n) {
+		double inCircle = 0; 
+		double inTotal = 0; 
+		double pi = 0;  
+		for(int i = 0; i < n; i++) { 
+			 double x = Math.random(); 
+		     double y = Math.random();
+			double distance = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)); 
+				if(distance <= 1) { 
+					
+					inCircle++; 
+				}
+				inTotal++; 
+				}
+		System.out.println(inCircle); 
+		System.out.println(inTotal); 
+		
+		pi = 4 * (inCircle / inTotal); 
+		return pi; 
+	}
+
+}
